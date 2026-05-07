@@ -13,11 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-  html, body, #root {
+  #root{
+    background: #0a0618;
+    width: 100%;
+    min-height: 100vh;
+  }
+  html, body {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
     width: 100%;
     margin: 0;
     padding: 0;
-    background: #0a0618;
   }
 
 a {

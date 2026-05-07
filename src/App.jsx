@@ -162,7 +162,7 @@ function ytEmbed(url) {
 }
 
 // ── PAGE READY SCREEN ──────────────────────────────────────────────
-function PageReady({ pageId, onView }) {
+function PageReady({ pageId, onView, onEdit }) {
   const shareLink = `${window.location.origin}?id=${pageId}`;
   const [copied, setCopied] = useState(false);
 
@@ -215,11 +215,14 @@ function PageReady({ pageId, onView }) {
           </button>
         </div>
 
-        <div style={{display:"flex", gap:12, justifyContent:"center"}}>
-          <button className="ghost-btn" style={ghostBtn} onClick={onView}>
-            Preview their page
-          </button>
-        </div>
+            <div style={{display:"flex", gap:12, justifyContent:"center"}}>
+      <button className="ghost-btn" style={ghostBtn} onClick={onEdit}>
+        Edit page
+      </button>
+      <button className="ghost-btn" style={ghostBtn} onClick={onView}>
+        Preview their page
+      </button>
+  </div>
 
         <p style={{...T.body, fontSize:12, color:C.dim, marginTop:32}}>
           Save your edit link too:<br/>
@@ -734,7 +737,7 @@ export default function App() {
     </div>
   );
   if(mode==="viewer") return <Viewer data={pageData}/>;
-  if(mode==="ready")  return <PageReady pageId={pageId} onView={()=>setMode("viewer")}/>;
+  if(mode==="ready")  return <PageReady pageId={pageId} onView={()=>setMode("viewer")} onEdit={()=>setMode("builder")}/>;
   if(mode==="unlock") return <Unlock value={pass} onChange={setPass} onSubmit={tryUnlock} error={passErr} onBack={()=>setMode("viewer")}/>;
   return <Builder form={form} setForm={setForm} onSave={save} saving={saving}/>;
 }
