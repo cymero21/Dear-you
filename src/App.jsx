@@ -414,14 +414,24 @@ function PhotoUpload({value, onChange, height=180, label="Tap to choose a photo"
       <input type="file" accept="image/*" onChange={handleFile}/>
       {value ? (
         <>
-          <img src={value} alt="preview" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}}/>
-          <div className="hover-overlay"><p style={{...T.body,fontSize:13,color:C.text,letterSpacing:2}}>change photo</p></div>
+          <img src={value} alt="preview" style={{
+            position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover",
+          }}/>
+          <div style={{
+            position:"absolute", bottom:0, left:0, right:0,
+            background:"rgba(10,6,24,.7)",
+            padding:"8px", textAlign:"center",
+          }}>
+            <p style={{...T.body, fontSize:12, color:C.gold, letterSpacing:2}}>
+              tap to change photo
+            </p>
+          </div>
         </>
       ) : (
         <>
           <div style={{fontSize:28}}>📷</div>
-          <p style={{...T.body,fontSize:13,color:C.muted}}>{label}</p>
-          <p style={{...T.body,fontSize:11,color:C.dim}}>from your gallery</p>
+          <p style={{...T.body, fontSize:13, color:C.muted}}>{label}</p>
+          <p style={{...T.body, fontSize:11, color:C.dim}}>from your gallery</p>
         </>
       )}
     </div>
